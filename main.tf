@@ -1,3 +1,32 @@
+variable "gcp_credentials" {
+    description = "GCP credentials needed by google provider"
+}
+
+variable "gcp_project" {
+    description = "GCP project name"
+}
+
+variable "machine_type" {
+    description = "GCP machine type"
+    default = "n1-standard-1"
+}
+
+variable "instance_name" {
+    description = "GCP instance name"
+    default = "demo"
+}
+
+variable "image" {
+    description = "GCP image"
+    default = "debian-cloud/debian-9"
+}
+
+provider "google" {
+    credentials = "${var.gcp_credentials}"
+    project = "${var.gcp_project}"
+    region = "us-east1"
+}
+
 
 resource "google_container_cluster" "k8sexample" {
   name               = "${var.vault_user}-k8s-cluster"
