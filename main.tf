@@ -13,12 +13,6 @@ variable "image" {
     default = "debian-cloud/debian-9"
 }
 
-provider "google" {
-    credentials = "${var.gcp_credentials}"
-    project = "${var.gcp_project}"
-    region = "us-east1"
-}
-
 
 resource "google_container_cluster" "k8sexample" {
   name               = "${var.vault_user}-k8s-cluster"
