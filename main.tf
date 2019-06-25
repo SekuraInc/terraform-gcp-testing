@@ -8,7 +8,7 @@ provider "google" {
 
 resource "google_project" "new_project" {
   name = = "${var.project}"
-  project_id = "${element(var.project, count.index)}"
+  project_id = "${var.project}"
   folder_id  = "${var.folder_id}"
   billing_account = "${var.billing_account}"
 }
