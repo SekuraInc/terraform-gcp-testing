@@ -21,10 +21,15 @@ variable "machine_type" {
 
 variable "instance_name" {
     description = "GCP instance name"
-    default = "demo"
+    default = "instance-by-terraform"
 }
 
 variable "image" {
     description = "GCP image"
     default = "debian-cloud/debian-9"
+}
+
+variable "gcp_zone" {
+  description = "GCP zone, e.g. us-east1-a"
+  default = "us-central1-c"
 }
