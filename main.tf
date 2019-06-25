@@ -1,14 +1,12 @@
 
-module "project-factory" {
-  source  = "terraform-google-modules/project-factory/google"
-  version = "~> 2.0"
 
-  name                = "tmx-project-test-1"
-  random_project_id   = "true"
-  org_id              = "189920249297"
-  usage_bucket_name   = "tmx-project-test-1-bucket"
-  usage_bucket_prefix = "pf/test/1/integration"
-  billing_account     = "01E29D-DF668D-8C6E8B"
-  folder_id           = "747662050065"
-
+resource "google_project" "new_project" {
+  count = "${length(var.projects)}"
+  name = "${element(var.projects, count.index)}"
+  project_id = "${element(var.projects, count.index)}"
+  org_id     = "${var.org_id}"
+  folder_id  = "${var.folder_id}"
+  billing_account = "${var.billing_account}"
 }
+
+
