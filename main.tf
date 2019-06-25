@@ -12,18 +12,36 @@ resource "google_project" "new_project" {
   billing_account = "${var.billing_account}"
 }
 
-
-variable "machine_type" {
-    description = "GCP machine type"
-    default = "n1-standard-1"
+resource "google_service_account" "project_admin" {
+  count = "${length(var.projects)}"
+  account_id   = "project-admin"
+  display_name = "Project Admin"
+  project = "${element(google_project.new_project.*.project_id, count.index)}"
 }
 
-variable "instance_name" {
-    description = "GCP instance name"
-    default = "demo"
+resource "google_project_iam_member" "project" {
+  count = "${length(var.projects)}"
+  project = "${element(google_project.new_project.*.project_id, count.index)}"
+  role    = "roles/editor"
+  member  = "user:${var.iam_user_email}"
 }
 
-variable "image" {
-    description = "GCP image"
-    default = "debian-cloud/debian-9"
+resource "google_project_service" "cloud_compute" {
+  count = "${length(var.projects)}"
+  project = "${element(google_project.new_project.*.project_id, count.index)}"
+  service = "compute.googleapis.com"
+
+  disable_dependent_services = true
 }
+
+resource "google_project_service" "billing" {
+  count = "${length(var.projects)}"  
+  project = "${element(google_project.new_project.*.project_id, count.index)}"
+  service = "cloudbilling.googleapis.com"
+
+  disable_dependent_services = true
+}
+
+
+
+
