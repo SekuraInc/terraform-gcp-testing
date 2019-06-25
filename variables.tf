@@ -1,6 +1,6 @@
 variable "gcp_project" {
   description = "GCP project name"	  description = "GCP project name"
-}	}
+}
 
 variable "org_id" { default="189920249297" }
 
