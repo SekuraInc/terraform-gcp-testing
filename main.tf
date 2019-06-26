@@ -67,7 +67,7 @@ module "mysql-db" {
 
 module "instance-template" {
   source        = "./modules/instance-template"
-  name          = "${${var.project}"
+  name          = "${var.project}"
   env           = "${var.env}"
   project       = "${google_project.new_project.project_id}"
   region        = "${var.region}"
@@ -76,11 +76,11 @@ module "instance-template" {
   instance_type = "${var.app_instance_type}"
   user          = "${var.user}"
   ssh_key       = "${var.ssh_key}"
-  db_name       = "${${var.project}}"
+  db_name       = "${var.project}}"
   db_user       = "hello"
   db_password   = "hello"
   db_ip         = "${module.mysql-db.instance_address}"
-}
+  }
 
 module "lb" {
   source            = "./modules/lb"
