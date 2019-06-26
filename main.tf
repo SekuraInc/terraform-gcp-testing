@@ -64,20 +64,21 @@ module "mysql-db" {
 }
 
 module "instance-template" {
-  source        = "./modules/instance-template"
-  name          = "${var.project}"
-  env           = "${var.env}"
-  project       = "${google_project.new_project.project_id}"
-  region        = "${var.region}"
-  network_name  = "${module.network.name}"
-  image         = "${var.app_image}"
-  instance_type = "${var.app_instance_type}"
-  user          = "${var.ssh_user}"
-  ssh_key       = "${var.ssh_key}"
-  db_name       = "${var.project}}"
-  db_user       = "hello"
-  db_password   = "hello"
-  db_ip         = "${module.mysql-db.instance_address}"
+  source          = "./modules/instance-template"
+  name            = "${var.project}"
+  env             = "${var.env}"
+  project         = "${google_project.new_project.project_id}"
+  region          = "${var.region}"
+  network_name    = "${module.network.name}"
+  subnetwork_name = "${module.network.webservers_subnet}"
+  image           = "${var.app_image}"
+  instance_type   = "${var.app_instance_type}"
+  user            = "${var.ssh_user}"
+  ssh_key         = "${var.ssh_key}"
+  db_name         = "${var.project}}"
+  db_user         = "hello"
+  db_password     = "hello"
+  db_ip           = "${module.mysql-db.instance_address}"
   }
 
 module "lb" {
