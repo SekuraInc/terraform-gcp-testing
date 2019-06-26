@@ -11,6 +11,7 @@ resource "google_project" "new_project" {
   project_id      = "${var.project}"
   folder_id       = "${var.folder_id}"
   billing_account = "${var.billing_account}"
+  auto_create_network = false
 }
 
 resource "google_service_account" "project_admin" {
