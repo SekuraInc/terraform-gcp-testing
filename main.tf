@@ -1,4 +1,5 @@
 
+# Create a new Google Project 
 provider "google" {
   credentials = "${var.gcp_credentials}"
   project     = "${var.project}"
@@ -16,47 +17,25 @@ resource "google_project" "new_project" {
 resource "google_service_account" "project_admin" {
   account_id   = "project-admin"
   display_name = "Project Admin"
-  project      = "${element(google_project.new_project.*.project_id, count.index)}"
+  project      = "${google_project.new_project.project_id}"
 }
 
 resource "google_project_iam_member" "project" {
-  project = "${element(google_project.new_project.*.project_id, count.index)}"
+  project = "${google_project.new_project.project_id}"
   role    = "roles/editor"
   member  = "user:${var.iam_user_email}"
 }
 
 resource "google_project_service" "cloud_compute" {
-  project = "${element(google_project.new_project.*.project_id, count.index)}"
+  project = "${google_project.new_project.project_id}"
   service = "compute.googleapis.com"
   disable_dependent_services = true
 }
 
 resource "google_project_service" "billing" {
-  project = "${element(google_project.new_project.*.project_id, count.index)}"
+  project = "${google_project.new_project.project_id}"
   service = "cloudbilling.googleapis.com"
-
   disable_dependent_services = true
 }
 
-
-resource "google_compute_instance" "demo" {
-  name         = "${var.instance_name}"
-  machine_type = "${var.machine_type}"
-  zone         = "${var.gcp_zone}"
-
-  boot_disk {
-    initialize_params {
-      image = "${var.image}"
-    }
-  }
-
-  network_interface {
-    network = "default"
-
-    access_config {
-      // Ephemeral IP
-    }
-  }
-
-}
 
