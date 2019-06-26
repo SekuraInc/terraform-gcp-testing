@@ -1,6 +1,6 @@
 variable project { default = "" }
 
-variable region { default = "europe-west1" }
+variable region { default = "" }
 
 variable database_version { default = "MYSQL_5_6" }
 
