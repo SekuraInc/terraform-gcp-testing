@@ -17,7 +17,7 @@ variable "gcp_credentials" {}
 variable "region" { default = "us-central1" }
 variable "zones" { default = ["us-central1-a", "us-central1-b"] }
 
-
+variable "env" { default = "test" }
 variable "webservers_subnet_ip_range" { default = "10.216.1.0/25"}
 variable "management_subnet_ip_range" { default = "10.216.1.128/25"}
 variable "bastion_image" { default = "centos-7-v20170918" }
