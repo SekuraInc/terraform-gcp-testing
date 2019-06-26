@@ -27,9 +27,9 @@ resource "google_project_iam_member" "project" {
 }
 
  
-resource "google_project_service" "project_enabled_services" {
-  project = "${google_project.new_project.project_id}"
- services = [
+resource "google_project_services" "project_enabled_services" {
+  project  = "${google_project.new_project.project_id}"
+  services = [
    "compute.googleapis.com",
    "sqladmin.googleapis.com",
    "cloudbilling.googleapis.com"
