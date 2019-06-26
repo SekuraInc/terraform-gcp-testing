@@ -34,7 +34,6 @@ resource "google_project_services" "project_enabled_services" {
    "sqladmin.googleapis.com",
    "cloudbilling.googleapis.com"
  ]
-  disable_dependent_services = true
 }
 
 
