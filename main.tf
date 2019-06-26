@@ -41,7 +41,7 @@ resource "google_project_service" "billing" {
 
 module "network" {
   source                     = "./modules/network"
-  name                       = "${module.project.name}"
+  name                       = "${var.project}"
   project                    = "${google_project.new_project.project_id}"
   region                     = "${var.region}"
   zones                      = "${var.zones}"
@@ -57,17 +57,17 @@ module "network" {
 
 module "mysql-db" {
   source           = "./modules/db"
-  db_name          = "${module.project.name}"
+  db_name          = "${var.project}"
   project          = "${google_project.new_project.project_id}"
   region           = "${var.region}"
-  db_name          = "${module.project.name}"
+  db_name          = "${var.project}"
   user_name        = "hello"
   user_password    = "hello"
 }
 
 module "instance-template" {
   source        = "./modules/instance-template"
-  name          = "${module.project.name}"
+  name          = "${${var.project}"
   env           = "${var.env}"
   project       = "${google_project.new_project.project_id}"
   region        = "${var.region}"
@@ -76,7 +76,7 @@ module "instance-template" {
   instance_type = "${var.app_instance_type}"
   user          = "${var.user}"
   ssh_key       = "${var.ssh_key}"
-  db_name       = "${module.project.name}"
+  db_name       = "${${var.project}}"
   db_user       = "hello"
   db_password   = "hello"
   db_ip         = "${module.mysql-db.instance_address}"
@@ -84,7 +84,7 @@ module "instance-template" {
 
 module "lb" {
   source            = "./modules/lb"
-  name              = "${module.project.name}"
+  name              = "${var.project}"
   project           = "${google_project.new_project.project_id}"
   region            = "${var.region}"
   count             = "${var.appserver_count}"
