@@ -1,6 +1,7 @@
 resource "google_compute_network" "network" {
   name    = "${var.name}-network"
   project = "${var.project}"
+  auto_create_subnetworks = "false"
 }
 
 resource "google_compute_firewall" "allow-internal" {
