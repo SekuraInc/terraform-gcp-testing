@@ -9,9 +9,9 @@ output "gateway_ipv4"  {
 }
 
 output "management_subnet" {
-  value = "{module.management_subnet.self_link}"
+  value = "${module.management_subnet.self_link}"
 }
 
 output "webservers_subnet" {
-  value = "{module.webservers_subnet.self_link}"
+  value = "${module.webservers_subnet.self_link}"
 }
