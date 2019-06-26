@@ -5,7 +5,7 @@ resource "google_compute_instance" "bastion" {
   zone         = "${element(var.zones, 0)}"
 
   metadata {
-    ssh-keys = "${var.user}:${file("${var.ssh_key}")}"
+    ssh-keys = "${var.user}:${var.ssh_key}"
   }
 
   boot_disk {
