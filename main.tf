@@ -27,13 +27,16 @@ resource "google_project_iam_member" "project" {
 }
 
  
-resource "google_project_services" "project_enabled_services" {
-  project  = "${google_project.new_project.project_id}"
-  services = [
-   "compute.googleapis.com",
-   "sqladmin.googleapis.com",
-   "cloudbilling.googleapis.com"
- ]
+resource "google_project_service" "cloud_compute" {
+  project = "${google_project.new_project.project_id}"
+  service = "compute.googleapis.com"
+  disable_dependent_services = true
+}
+
+resource "google_project_service" "billing" {
+  project = "${google_project.new_project.project_id}"
+  service = "cloudbilling.googleapis.com"
+  disable_dependent_services = true
 }
 
 
