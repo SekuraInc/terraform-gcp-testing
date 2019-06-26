@@ -15,7 +15,7 @@ resource "google_compute_instance_template" "webserver" {
   region       = "${var.region}"
 
   metadata {
-    ssh-keys = "${var.user}:${file("${var.ssh_key}")}"
+    ssh-keys = "${var.user}:${var.ssh_key}"
   }
 
   disk {

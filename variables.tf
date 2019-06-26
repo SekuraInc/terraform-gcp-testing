@@ -22,7 +22,7 @@ variable "webservers_subnet_ip_range" { default = "10.216.1.0/25"}
 variable "management_subnet_ip_range" { default = "10.216.1.128/25"}
 variable "bastion_image" { default = "centos-7-v20170918" }
 variable "bastion_instance_type" { default = "f1-micro" }
-variable "user" {}
+variable "ssh_user" {}
 variable "ssh_key" {}
 variable "db_region" { default = "us-central1" }
 variable "appserver_count" { default = 2 }

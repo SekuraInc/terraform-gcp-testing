@@ -51,7 +51,7 @@ module "network" {
   management_subnet_ip_range = "${var.management_subnet_ip_range}"
   bastion_image              = "${var.bastion_image}"
   bastion_instance_type      = "${var.bastion_instance_type}"
-  user                       = "${var.user}"
+  user                       = "${var.ssh_user}"
   ssh_key                    = "${var.ssh_key}"
 }
 
@@ -74,7 +74,7 @@ module "instance-template" {
   network_name  = "${module.network.name}"
   image         = "${var.app_image}"
   instance_type = "${var.app_instance_type}"
-  user          = "${var.user}"
+  user          = "${var.ssh_user}"
   ssh_key       = "${var.ssh_key}"
   db_name       = "${var.project}}"
   db_user       = "hello"
