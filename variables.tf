@@ -15,7 +15,7 @@ variable "iam_user_email" { default="hank.lin@tmx.com" }
 variable "gcp_credentials" {}
 
 variable "region" { default = "us-central1" }
-variable "zones" { default = ["us-central1-a", "us-central1-b"] }
+variable "zones" { default = ["us-central1-b"] }
 
 variable "env" { default = "test" }
 variable "webservers_subnet_ip_range" { default = "10.216.1.0/25"}
