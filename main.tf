@@ -108,7 +108,7 @@ module "cluster" {
   source = "./modules/cluster"
 
   region = "${var.region}"
-  zone = "${var.zones}"
+  zone = "${var.zones[0]}"
 
   platform_name = "${var.platform_name}"
 
