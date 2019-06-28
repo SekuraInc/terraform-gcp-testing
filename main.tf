@@ -33,6 +33,12 @@ resource "google_project_service" "cloud_compute" {
   disable_dependent_services = true
 }
 
+resource "google_project_service" "kubernetes" {
+  project = "${google_project.new_project.project_id}"
+  service = "container.googleapis.com"
+  disable_dependent_services = true
+}
+
 resource "google_project_service" "billing" {
   project = "${google_project.new_project.project_id}"
   service = "cloudbilling.googleapis.com"
@@ -84,6 +90,7 @@ module "instance-template" {
   db_ip           = "${module.mysql-db.instance_address}"
   }
 
+/*
 module "lb" {
   source            = "./modules/lb"
   name              = "${var.project}"
@@ -93,6 +100,28 @@ module "lb" {
   instance_template = "${module.instance-template.instance_template}"
   zones             = "${var.zones}"
 }
+
+*/
+
+
+module "cluster" {
+  source = "./modules/cluster"
+
+  gcloud_region = "${var.region}"
+  gcloud_zone = "${var.zones}"
+
+  platform_name = "${var.platform_name}"
+
+  network_name = "${module.network.name}"
+  subnetwork_name = "${module.network.webservers_subnet}"
+
+  cluster_node_machine_type = "${var.cluster_node_machine_type}"
+  cluster_node_initial_count = "${var.cluster_node_initial_count}"
+
+  cluster_master_auth_username = "${var.cluster_master_auth_username}"
+  cluster_master_auth_password = "${var.cluster_master_auth_password}"
+}
+
 
 
 
