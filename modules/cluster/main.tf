@@ -41,7 +41,7 @@ resource "google_container_cluster" "platform_name" {
     ]
 
     # Tags can used to identify targets in firewall rules
-    tags = ["${var.name}-cluster", "nodes"]
+    tags = ["${var.platform_name}-cluster", "nodes"]
   }
   
 }
