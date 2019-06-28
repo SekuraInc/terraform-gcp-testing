@@ -29,6 +29,7 @@ variable "appserver_count" { default = 2 }
 variable "app_image" { default = "centos-7-v20170918" }
 variable "app_instance_type" { default = "f1-micro" }
 
+variable "platform_name" { default = "tmx-kuberbets-test" }
 variable "cluster_node_machine_type" { default = "g1-small" }
 variable "cluster_node_initial_count" { default = 2 }
 
