@@ -28,3 +28,10 @@ variable "db_region" { default = "us-central1" }
 variable "appserver_count" { default = 2 }
 variable "app_image" { default = "centos-7-v20170918" }
 variable "app_instance_type" { default = "f1-micro" }
+
+variable "cluster_node_machine_type" { default = "g1-small" }
+variable "cluster_node_initial_count" { default = 2 }
+
+
+variable "cluster_master_auth_username" { default = "username1234" }
+variable "cluster_master_auth_password" { default = = "password1234" }
