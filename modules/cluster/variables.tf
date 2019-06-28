@@ -1,5 +1,5 @@
-variable "gcloud_zone" {}
-variable "gcloud_region" {}
+variable "zone" {}
+variable "region" {}
 
 variable "platform_name" {}
 

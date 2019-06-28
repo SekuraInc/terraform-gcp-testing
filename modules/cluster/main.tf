@@ -2,7 +2,7 @@ resource "google_container_cluster" "platform_name" {
   name = "${var.platform_name}-cluster"
   network = "${var.network_name}"
   subnetwork = "${var.subnetwork_name}"
-  zone = "${var.gcloud_zone}"
+  zone = "${var.zone}"
 
   initial_node_count = "${var.cluster_node_initial_count}"
 
