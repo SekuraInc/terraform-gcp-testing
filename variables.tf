@@ -35,4 +35,4 @@ variable "cluster_node_initial_count" { default = 2 }
 
 
 variable "cluster_master_auth_username" { default = "username1234" }
-variable "cluster_master_auth_password" { default = = "password1234" }
+variable "cluster_master_auth_password" { default = "password1234" }
