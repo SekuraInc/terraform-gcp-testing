@@ -107,8 +107,8 @@ module "lb" {
 module "cluster" {
   source = "./modules/cluster"
 
-  gcloud_region = "${var.region}"
-  gcloud_zone = "${var.zones}"
+  region = "${var.region}"
+  zone = "${var.zones}"
 
   platform_name = "${var.platform_name}"
 
