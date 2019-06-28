@@ -8,7 +8,7 @@ variable "folder_id" { default="747662050065" }
 
 variable "billing_account" { default= "01E29D-DF668D-8C6E8B" }
 
-variable "project" {  default     = "tmx-project-test-1" }
+variable "project" {  default     = "tmx-project-test-2" }
 
 variable "iam_user_email" { default="hank.lin@tmx.com" }
 
