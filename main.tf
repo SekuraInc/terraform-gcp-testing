@@ -103,7 +103,7 @@ module "lb" {
 
 */
 
-
+/*
 module "cluster" {
   source = "./modules/cluster"
 
@@ -122,6 +122,6 @@ module "cluster" {
   cluster_master_auth_password = "${var.cluster_master_auth_password}"
 }
 
-
+*/
 
 
