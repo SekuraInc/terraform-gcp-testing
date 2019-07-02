@@ -1,6 +1,6 @@
 
 # Create a new Google Project 
-provider "google-beta" {
+provider "google" {
   credentials = "${var.gcp_credentials}"
   project     = "${var.project}"
   region      = "us-central1"
