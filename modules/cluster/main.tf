@@ -15,10 +15,11 @@ resource "google_container_cluster" "platform_name" {
       disabled = "${var.disable_autoscaling_addon}"
     }
 
-    istio_config  {
+    istio_config {
       disabled = "${var.disable_istio_config_addon}"
     }
-    cloudrun_config  {
+
+    cloudrun_config {
       disabled = "${var.disable_cloudrun_config_addon}"
     }
 
