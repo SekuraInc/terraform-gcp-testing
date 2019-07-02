@@ -14,7 +14,6 @@ resource "google_container_cluster" "platform_name" {
     http_load_balancing {
       disabled = "${var.disable_autoscaling_addon}"
     }
-
     istio_config {
       disabled = "${var.disable_istio_config_addon}"
     }
