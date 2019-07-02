@@ -33,7 +33,20 @@ variable "disable_dashboard" {
 }
 
 variable "disable_autoscaling_addon" {
-  description = "Whetherthe Autoscaling Pod addon should be disabled"
+  description = "Whether the Autoscaling Pod addon should be disabled"
   default     = false
 }
+
+variable "disable_istio_config_addon" {
+  description = "Whether the istio_config addon should be disabled"
+  default     = false
+}
+
+variable "disable_cloudrun_config_addon" {
+  description = "Whether the CloudRun config addon should be disabled"
+  default     = false
+}
+
+
+
 
